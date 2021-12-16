@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKategorisTable extends Migration
+class CreateAnggaransTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateKategorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategoris', function (Blueprint $table) {
+        Schema::create('anggarans', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori_id', 5);
-            $table->index('kategori_id');
-            $table->string('nama_kategori', 50);
+            $table->string('anggaran_id', 5);
+            $table->index('anggaran_id');
+            $table->integer('biaya');
+            $table->date('tgl_anggaran');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateKategorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategoris');
+        Schema::dropIfExists('anggarans');
     }
 }

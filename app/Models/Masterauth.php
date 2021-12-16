@@ -10,7 +10,7 @@ class Masterauth extends Authenticatable
     protected $guard = 'masterauth';
     protected $table = 'masterauth';
 
-    protected $fillable = ['name', 'email', 'paswword'];
+    protected $fillable = ['masterauth_id', 'name', 'email', 'paswword', 'nik'];
 
     protected $hidden = ['password'];
 }

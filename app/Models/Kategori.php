@@ -19,7 +19,7 @@ class Kategori extends Model
         return [
             'kategori_id' => [
                 'format' => 'KTG?',
-                'length' => 5
+                'length' => 2
             ]
         ];
     }

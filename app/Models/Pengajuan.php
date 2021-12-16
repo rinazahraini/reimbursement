@@ -12,14 +12,14 @@ class Pengajuan extends Model
     use AutoNumberTrait;
 
     protected $table = "pengajuans";
-    protected $fillable = ['pengajuan_id', 'pengajuan_kategori_id', 'tgl_tugas', 'deskripsi', 'upload_spj', 'status', 'claim_id', 'created_at', 'updated_at'];
+    protected $fillable = ['pengajuan_id', 'user_id', 'kategori_id', 'rincian_id', 'tgl_kwitansi', 'deskripsi', 'upload_kwitansi', 'claim_status', 'claim_id', 'claim_biaya', 'created_at', 'updated_at'];
     
     public function getAutoNumberOptions()
     {
         return [
             'pengajuan_id' => [
                 'format' => 'PJ?',
-                'length' => 5
+                'length' => 3
             ]
         ];
     }

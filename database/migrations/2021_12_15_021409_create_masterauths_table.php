@@ -15,9 +15,12 @@ class CreateMasterauthsTable extends Migration
     {
         Schema::create('masterauths', function (Blueprint $table) {
             $table->id();
+            $table->string('masterauth_id');
+            $table->index('masterauth_id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('nik');
             $table->timestamps();
         });
     }

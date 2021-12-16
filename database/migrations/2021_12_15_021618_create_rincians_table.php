@@ -14,12 +14,12 @@ class CreateRinciansTable extends Migration
     public function up()
     {
         Schema::create('rincians', function (Blueprint $table) {
-            $table->string('rincian_id', 5)->primary();
+            $table->id();
+            $table->string('rincian_id', 5);
             $table->index('rincian_id');
-            $table->string('rincian_pengajuan_id', 5);
-            $table->foreign('rincian_pengajuan_id')->references('pengajuan_id')->on('pengajuans')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('kategori_id', 5);
+            $table->foreign('kategori_id')->references('kategori_id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama_rincian', 50);
-            $table->integer('harga');
             $table->timestamps();
         });
     }

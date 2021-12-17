@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Login Pengguna
+    Login User
 @endsection
 @section('content')
 

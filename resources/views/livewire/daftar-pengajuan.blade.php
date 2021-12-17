@@ -16,13 +16,9 @@
                     </div>
                     <div
                         class="relative px-4 mt-2 font-medium leading-10 md:flex-grow-0 md:flex-shrink-0 md:mt-0 md:text-right lg:flex-grow-0 lg:flex-shrink-0">
-                        <a href="{{route('home')}}"
+                        <a href="{{route('admin.dashboard')}}"
                             class="box-border inline-block mx-5 text-right text-indigo-900 no-underline bg-transparent cursor-pointer hover:text-blue-700 focus:no-underline">
                             Home
-                        </a>
-                        <a href="{{route('status')}}"
-                            class="box-border inline-block mx-5 text-right text-indigo-900 no-underline bg-transparent cursor-pointer hover:text-blue-700 focus:no-underline">
-                            Status
                         </a>
                         <a href="{{ route('admin.keluar') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -78,7 +74,7 @@
                                             </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Biaya Approve
+                                                Biaya Approved
                                             </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -133,7 +129,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-900">
                                                     @if ($item->claim_status == 'y')
-                                                    <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="text-sm px-12 bg-green-200 text-green-800 rounded-full">Finish</div>
+                                                    <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="text-sm px-3 bg-green-200 text-green-800 rounded-full">Finish</div>
                                                     @else
                                                     <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="text-sm px-3 bg-red-200 text-red-800 rounded-full">Running</div>
                                                     @endif</h3>

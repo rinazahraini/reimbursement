@@ -18,18 +18,14 @@ use App\Http\Controllers\Auth\Pengguna\LoginController;
 */
 
 
-// Route::get('/', [LoginController::class, 'getLogin'])->name('login.user');
-
 
 Route::group(['prefix' => 'auth'], function(){
     Route::get('/master/masuk', [AuthLoginController::class, 'getLogin'])->name('login.admin');
     Route::post('/master/masuk', [AuthLoginController::class, 'postLogin']);
 }); 
 
-// Route::group(['prefix' => 'pengguna'], function(){
-    Route::get('/', [LoginController::class, 'getLogin'])->name('login.user');
-    Route::post('/', [LoginController::class, 'postLogin']);
-// });
+Route::get('/', [LoginController::class, 'getLogin'])->name('login.user');
+Route::post('/', [LoginController::class, 'postLogin']);
 
 Route::group(['middleware' => ['auth:masterauth'], 'as' => 'admin.'], function() {
 

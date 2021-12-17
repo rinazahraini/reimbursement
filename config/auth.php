@@ -40,6 +40,22 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'masterauth' => [
+            'driver' => 'session',
+            'provider' => 'masterauths',
+        ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -69,6 +85,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'masterauths' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Masterauth::class,
+        ],
     ],
 
     /*

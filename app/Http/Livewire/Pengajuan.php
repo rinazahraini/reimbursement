@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Pengajuan as ModelPengajuan;
 use App\Models\Rincian as ModelRincian;
 use App\Models\Kategori as ModelKategori;
+use App\Models\User as ModelUser;
+use Jenssegers\Date\Date;
 
 class Pengajuan extends Component
 {
@@ -18,14 +21,25 @@ class Pengajuan extends Component
     public $kategori_id, $nama_kategori;
 
     public function render()
-    {
+    { 
+        $tahun = Date::now()->format('Y');
+
+        $pengajuan = ModelPengajuan::join('users', 'users.user_id', '=', 'pengajuans.user_id')
+        ->where('users.user_id', '=', Auth::user()->user_id)
+        ->whereYear('tgl_kwitansi', $tahun)
+        ->orderBy('created_at', 'DESC')
+        ->sum('claim_biaya');
+
+        $user = ModelUser::where('users.user_id', '=', Auth::user()->user_id)
+        ->get();
+        
         $kategori = ModelKategori::orderBy('nama_kategori', 'ASC')
         ->get();
 
         $rincian = ModelRincian::orderBy('nama_rincian', 'ASC')
         ->get();
 
-        return view('livewire.pengajuan', compact('kategori','rincian'));
+        return view('livewire.pengajuan', compact('pengajuan','user','kategori','rincian'));
     }
 
     private function resetInput()

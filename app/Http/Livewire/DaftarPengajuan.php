@@ -59,6 +59,8 @@ class DaftarPengajuan extends Component
 
     public function update()
     {
+        $tahun = Date::now()->format('y');
+
         $validate = $this->validate([
             'biaya_approve' => 'required',
         ]);
@@ -66,9 +68,19 @@ class DaftarPengajuan extends Component
         $data = ModelPengajuan::find($this->selected_id);
         $data->biaya_approve = $this->biaya_approve;
         $data->claim_status = 'y';
+        $data->claim_id = 'RM-'.$tahun.'-'.$this->generateUniqueCode();
         $data->update();
 
         session()->flash('message', 'Dana berhasil dicairkan.');
         $this->resetInput();
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $claim_id = random_int(1000, 9999);
+        } while (ModelPengajuan::where("claim_id", "=", $claim_id)->first());
+  
+        return $claim_id;
     }
 }
